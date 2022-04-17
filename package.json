@@ -1,4 +1,5 @@
 {
+  "homepage": "http://xdsup.github.io/near_hackaton_Chalange2",
   "name": "rust-status-message-builder",
   "version": "1.0.0",
   "description": "Compiles NEAR Protocol example of setting and retrieving a status message per NEAR account",
@@ -6,6 +7,8 @@
     "build": "cargo build --target wasm32-unknown-unknown --release",
     "build:web": "parcel build ./frontend/index.html --public-url ./ --no-minify",
     "deploy:dev": "npm run build && near dev-deploy res/status_message.wasm",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "npm run deploy:dev && npm start",
     "start": "npm run build && npm run build:web && env-cmd -f ./neardev/dev-account.env parcel ./frontend/index.html",
     "postbuild": "cp target/wasm32-unknown-unknown/release/status_message.wasm ./res/"
